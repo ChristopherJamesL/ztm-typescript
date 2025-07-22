@@ -8,3 +8,10 @@ import { strict as assert } from "assert";
 // Useful links:
 // https://www.typescriptlang.org/docs/handbook/2/modules.html
 //
+
+import { add, pi, Int as Integer } from './math';
+import { Point } from './coord';
+
+const three: Integer = 3;
+
+const four = add(2, 2);

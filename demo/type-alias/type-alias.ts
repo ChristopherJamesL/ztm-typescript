@@ -10,3 +10,22 @@ import { strict as assert } from "assert";
 // Useful links:
 // https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases
 //
+
+type PersonName = string;
+
+const myName: PersonName = 'Chris';
+const alsoMyName: string = 'Chris';
+
+// bad - function signature not descriptive
+function print(thing: string) {
+    console.log(`Name is ${thing}`);
+}
+
+print('house');
+
+// good - function signature descriptive
+function printname(name: PersonName) {
+    console.log(`Name is ${name}`);
+}
+
+printname('Chris');

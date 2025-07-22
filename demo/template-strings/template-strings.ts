@@ -7,3 +7,16 @@ import { strict as assert } from "assert";
 // Useful links:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 //
+
+function greet(message) {
+    console.log(`Hello ${message}`);
+}
+
+greet('Typescript');
+
+const kids = 2;
+const adults = 4;
+const totalAttending = `${kids + adults} people`;
+const message = `There are ${totalAttending}`;
+
+console.log(`${message} to seat at the restaurant`);
