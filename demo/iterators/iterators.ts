@@ -9,3 +9,33 @@
 // Useful links:
 // https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html
 //
+
+const abc = ['a', 'b', 'c'];
+
+// c-style
+for (let i = 0; i < abc.length; i++) {
+    console.log(abc[i]);
+}
+
+for (const letter of abc) {
+    console.log(letter);
+}
+
+const nums = {
+    one: 1,
+    two: 2,
+    three: 3,
+};
+
+let property: keyof typeof nums;
+
+for (property in nums) {
+    console.log(nums[property]);
+}
+
+nums['letter'] = 'a';
+
+for (property in nums) {
+    const answer = nums[property] * 2;
+    console.log(answer);
+}

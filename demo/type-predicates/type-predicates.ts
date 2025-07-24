@@ -13,3 +13,50 @@ import { strict as assert } from "assert";
 // Useful links:
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
 //
+
+// type guard:
+type StrOrNum = string| number;
+function sample(data: StrOrNum) {
+    if (typeof data === 'string') {
+        //
+    } else if (typeof data === 'number') {
+        //code
+    }
+}
+
+// type predicate:
+interface Square {
+    kind: 'square';
+    size: number;
+}
+
+interface Circle {
+    kind: 'circle';
+    radius: number;
+}
+
+type Shape = Square | Circle;
+
+function isSquare(shape: Shape): shape is Square {
+    return shape.kind === 'square';
+}
+
+function isCircle(shape: Shape): shape is Circle {
+    return shape.kind === 'circle';
+}
+
+function calculateArea(shape: Shape): number {
+    if (isSquare(shape)) {
+        return shape.size ** 2;
+    }
+    if (isCircle(shape)) {
+        return Math.PI * shape.radius ** 2;
+    }
+    throw new Error('unknown shape');
+}
+
+const square: Shape = { kind: 'square', size: 5 };
+const circle: Shape = { kind: 'circle', radius: 2 };
+
+assert.equal(calculateArea(square), 25);
+assert.equal(calculateArea(circle), Math.PI * 2 ** 2);

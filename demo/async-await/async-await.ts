@@ -14,3 +14,22 @@ import { strict as assert } from "assert";
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
 //
+
+async function fetchUserData(userId: number): Promise<{ name: string }> {
+    const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+    );
+
+    const data = await response.json();
+
+    return { name: data.name };
+}
+
+(async () => {
+    try {
+        const userData = await fetchUserData(1);
+        console.log(userData.name);
+    } catch (err) {
+        console.error(err);
+    }
+})();

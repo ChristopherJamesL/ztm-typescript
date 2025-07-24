@@ -11,3 +11,29 @@ import { strict as assert } from "assert";
 // Useful links:
 // https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions
 //
+
+const greeting: unknown = 'hello';
+
+// wrong!
+// const greet = greeting as number;
+// const n = greet + 2;
+// console.log(n);
+
+const numChars = (greeting as string).length;
+
+interface Employee {
+    position(): string;
+}
+
+class Manager implements Employee {
+    position(): string {
+        return 'Manager';
+    }
+
+    sayHello(): void {
+        console.log('hello!');
+    }
+}
+
+const alice: Employee = new Manager(); // setting alice to type employee means she doesnt get sayHello
+alice.position();
