@@ -13,3 +13,25 @@ import { strict as assert } from "assert";
 // Useful links:
 // https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-classes
 //
+
+class Stack<T> {
+    private elements: T[] = [];
+    public push(element: T): void {
+        this.elements.push(element);
+    }
+    public pop(): T | undefined {
+        return this.elements.pop();
+    }
+    public peek(): T | undefined {
+        return this.elements[this.elements.length - 1];
+    }
+    public isEmpty(): boolean {
+        return this.elements.length === 0;
+    }
+}
+
+const strings = new Stack<string>();
+strings.push('hello');
+strings.push('world');
+
+const world = strings.pop();

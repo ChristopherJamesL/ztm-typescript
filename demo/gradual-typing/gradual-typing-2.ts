@@ -1,13 +1,19 @@
 // JavaScript
+type ItemQuantity = number;
+type ItemPrice = number;
+type ItemName = string;
 
-function addItemToCart(cart, item, quantity) {
-  if (!cart[item]) {
+type PriceMap = Record<ItemName, ItemPrice>;
+type Cart = Record<ItemName, ItemQuantity>
+
+function addItemToCart(cart: Cart, item: ItemName, quantity: ItemQuantity): void {
+  if (!(item in cart)) {
     cart[item] = 0;
   }
   cart[item] += quantity;
 }
 
-function calculateTotal(cart, prices) {
+function calculateTotal(cart: Cart, prices: PriceMap): number {
   let total = 0;
   for (const item in cart) {
     total += cart[item] * prices[item];
@@ -15,9 +21,10 @@ function calculateTotal(cart, prices) {
   return total;
 }
 
-function applyDiscount(total, discount) {
+function applyDiscount(total: number, discount: number): number {
   return total * (1 - discount);
 }
+
 
 // Example usage
 const cart = {};

@@ -11,3 +11,42 @@
 // option at a time. Combining this with objects allows multiple
 // pieces of data to be associated with each individual option.
 //
+
+type numbers = 1 | 2 | string | number;
+
+type AccountCreationMessage = 
+    | { kind: 'ok'; greeting: string}
+    | { kind: 'passwordComplexityFailure'; message: string }
+    | { kind: 'usernameExists' };
+
+const ok: AccountCreationMessage = {
+    kind: 'ok',
+    greeting: 'Welcome to the platform!'
+};
+
+const passwordTooShort: AccountCreationMessage = {
+    kind: 'passwordComplexityFailure',
+    message: 'Password must be at least 10 characters',
+};
+
+const exists: AccountCreationMessage = {
+    kind: 'usernameExists',
+}
+
+function showMessage(msg: AccountCreationMessage) {
+    switch(msg.kind) {
+        case 'ok':
+            console.log(`${msg.greeting}`);
+            break;
+        case 'passwordComplexityFailure':
+            console.log(`${msg.message}`)
+            break;
+        case 'usernameExists':
+            console.log(`Username already exists`);
+            break;
+    }
+}
+
+showMessage(ok);
+showMessage(passwordTooShort);
+showMessage(exists);

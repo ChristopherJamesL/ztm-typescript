@@ -1,3 +1,4 @@
+// summing things together and returning the total.
 function add(a, b, ...args) {
     let total = a + b;
     for (let n of args) {
@@ -6,6 +7,7 @@ function add(a, b, ...args) {
     return total;
 }
 
+// array of numbers, return maximum
 function max(arr) {
     if (arr.length === 0) {
         return null;
@@ -13,6 +15,7 @@ function max(arr) {
     return arr.reduce((a, b) => Math.max(a, b));
 }
 
+// changes text to upper or lowercase and returns new text
 function setCase(message, kind) {
     if (kind === "uppercase") {
         return message.toUpperCase();
@@ -23,6 +26,7 @@ function setCase(message, kind) {
     }
 }
 
+// returns another function
 function quote(message) {
     return () => { return `"${message}"` }
 }
